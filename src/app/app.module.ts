@@ -7,7 +7,12 @@ import { CalcSecondThemeComponent } from './calc-second-theme/calc-second-theme.
 import { CalcThirdThemeComponent } from './calc-third-theme/calc-third-theme.component';
 
 @NgModule({
-  declarations: [AppComponent, CalcFirstThemeComponent, CalcSecondThemeComponent, CalcThirdThemeComponent],
+  declarations: [
+    AppComponent,
+    CalcFirstThemeComponent,
+    CalcSecondThemeComponent,
+    CalcThirdThemeComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

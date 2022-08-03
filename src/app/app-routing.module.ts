@@ -21,6 +21,7 @@ const routes: Routes = [
     title: 'Calculator - third theme',
   },
   { path: '', redirectTo: '/theme-1', pathMatch: 'full' },
+  { path: '**', redirectTo: '/theme-1' },
 ];
 
 @NgModule({
