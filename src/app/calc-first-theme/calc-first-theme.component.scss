@@ -73,6 +73,8 @@
     }
     .calc-screen {
       width: 100%;
+      height: 12vh;
+      line-height: 6vh;
       padding: 3vh;
       background-color: #182034;
       border-radius: 10px;
@@ -80,6 +82,7 @@
       margin-bottom: 2vh;
       text-align: end;
       font-weight: 700;
+      font-size: 42px;
     }
     .calc-keypad {
       width: 100%;
