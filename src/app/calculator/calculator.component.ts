@@ -11,18 +11,17 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {}
 
   onChangeTheme() {
-    const toggle = document.getElementById('toggle');
     const wrapper = document.getElementById('wrapper');
 
     if (wrapper?.classList.contains('first-theme')) {
-      wrapper.classList.remove('first-theme');
-      wrapper.classList.add('second-theme');
+      wrapper.classList.toggle('first-theme');
+      wrapper.classList.toggle('second-theme');
     } else if (wrapper?.classList.contains('second-theme')) {
-      wrapper.classList.remove('second-theme');
-      wrapper.classList.add('third-theme');
+      wrapper.classList.toggle('second-theme');
+      wrapper.classList.toggle('third-theme');
     } else if (wrapper?.classList.contains('third-theme')) {
-      wrapper.classList.remove('third-theme');
-      wrapper.classList.add('first-theme');
+      wrapper.classList.toggle('third-theme');
+      wrapper.classList.toggle('first-theme');
     }
   }
 }
