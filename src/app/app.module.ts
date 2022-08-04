@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalcFirstThemeComponent } from './calc-first-theme/calc-first-theme.component';
-import { CalcSecondThemeComponent } from './calc-second-theme/calc-second-theme.component';
-import { CalcThirdThemeComponent } from './calc-third-theme/calc-third-theme.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CalcFirstThemeComponent,
-    CalcSecondThemeComponent,
-    CalcThirdThemeComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [AppComponent, CalculatorComponent],
+  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
 })

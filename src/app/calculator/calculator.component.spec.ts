@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalcThirdThemeComponent } from './calc-third-theme.component';
+import { CalculatorComponent } from './calculator.component';
 
-describe('CalcThirdThemeComponent', () => {
-  let component: CalcThirdThemeComponent;
-  let fixture: ComponentFixture<CalcThirdThemeComponent>;
+describe('CalculatorComponent', () => {
+  let component: CalculatorComponent;
+  let fixture: ComponentFixture<CalculatorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalcThirdThemeComponent ]
+      declarations: [ CalculatorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CalcThirdThemeComponent);
+    fixture = TestBed.createComponent(CalculatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
