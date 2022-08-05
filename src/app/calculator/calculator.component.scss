@@ -15,21 +15,27 @@
 
   @media (min-width: 576px) {
     margin: 8vw;
-    max-width: 75%;
+    max-width: 70%;
   }
 
   @media (min-width: 768px) {
-    max-width: 65%;
+    max-width: 55%;
     margin: 4vw;
   }
 
   @media (min-width: 992px) {
-    margin: 3vw;
+    max-width: 50%;
+    margin: 2vw;
   }
 
   @media (min-width: 1200px) {
     margin: 3vw;
-    max-width: 45%;
+    max-width: 40%;
+  }
+
+  @media (min-width: 1400px) {
+    margin: 2vw;
+    max-width: 35%;
   }
   .calc-nav {
     width: 100%;
@@ -51,6 +57,9 @@
     }
     @media (min-width: 768px) {
       font-size: 14px;
+    }
+    @media (min-width: 992px) {
+      margin-bottom: 3vh;
     }
 
     .calc-nav-name {
@@ -102,37 +111,52 @@
     }
   }
   .calc-screen {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
     width: 100%;
-    // max-width: 9vw;
-    min-height: 12vh;
-    max-height: 14vh;
+    height: 14vh;
     margin-bottom: 3vh;
     padding: 2vh;
     border-radius: 10px;
     line-height: 6vh;
-    text-align: end;
+    // text-align: end;
     font-weight: 700;
-    font-size: 42px;
+    font-size: 32px;
+    word-wrap: break-word;
     word-break: break-all;
     overflow: hidden;
 
+    .current-operand {
+      min-height: 32px;
+    }
+    .previous-operand {
+      font-size: 20px;
+      @media (min-width: 992px) {
+        font-size: 26px;
+      }
+    }
     @media (min-width: 576px) {
       margin-bottom: 4vh;
     }
 
     @media (min-width: 992px) {
+      font-size: 42px;
       max-width: 50vw;
       padding: 3vh;
       max-height: 15vh;
+      margin-bottom: 3vh;
     }
 
     @media (min-width: 1200px) {
     }
     @media (min-width: 1400px) {
-      max-width: 35vw;
+      // max-width: 35vw;
       max-height: 21.5vh;
     }
   }
+
   .calc-keypad {
     width: 100%;
     min-height: 60vh;
@@ -148,6 +172,14 @@
     }
     @media (min-width: 768px) {
       gap: 3vh;
+    }
+
+    @media (min-width: 992px) {
+      gap: 2vh;
+    }
+
+    @media (min-width: 1400px) {
+      // gap: 3vh;
     }
   }
   .grid-col-span-2 {
@@ -165,11 +197,22 @@
     @media (min-width: 576px) {
       padding: 2vw;
     }
+
+    @media (min-width: 992px) {
+      padding: 1vw;
+    }
+
+    @media (min-width: 1400px) {
+      font-size: 32px;
+    }
   }
   .del-btn {
     font-size: 20px;
     @media (min-width: 576px) {
       font-size: 24px;
+    }
+    @media (min-width: 1400px) {
+      font-size: 32px;
     }
   }
 }
