@@ -10,28 +10,30 @@
         <a (click)="onChangeTheme()" id="toggle" class="toggle"></a>
       </div>
     </div>
-    <input class="calc-screen" value="0,00" disabled type="text" />
-    <div class="calc-keypad">
-      <button class="calc-btn no-btn" value="7">7</button>
-      <button class="calc-btn no-btn" value="8">8</button>
-      <button class="calc-btn no-btn" value="9">9</button>
-      <button class="calc-btn del-btn" value="delete">DEL</button>
-      <button class="calc-btn no-btn" value="4">4</button>
-      <button class="calc-btn no-btn" value="5">5</button>
-      <button class="calc-btn no-btn" value="6">6</button>
-      <button class="calc-btn plus-btn" value="+">+</button>
-      <button class="calc-btn no-btn" value="1">1</button>
-      <button class="calc-btn no-btn" value="2">2</button>
-      <button class="calc-btn no-btn" value="3">3</button>
-      <button class="calc-btn minus-btn" value="-">-</button>
-      <button class="calc-btn decimal-btn" value=".">.</button>
-      <button class="calc-btn no-btn" value="0">0</button>
-      <button class="calc-btn divide-btn" value="/">/</button>
-      <button class="calc-btn multiply-btn" value="x">x</button>
-      <button class="calc-btn reset-btn grid-col-span-2" value="reset">
-        RESET
-      </button>
-      <button class="calc-btn score-btn grid-col-span-2" value="=">=</button>
+    <div class="calc-screen">
+      <div class="previous-operand"></div>
+      <div class="current-operand"></div>
     </div>
+    <div class="calc-keypad">
+      <button class="calc-btn no-btn">7</button>
+      <button class="calc-btn no-btn">8</button>
+      <button class="calc-btn no-btn">9</button>
+      <button class="calc-btn del-btn">DEL</button>
+      <button class="calc-btn no-btn">4</button>
+      <button class="calc-btn no-btn">5</button>
+      <button class="calc-btn no-btn">6</button>
+      <button class="calc-btn plus-btn operation-btn">+</button>
+      <button class="calc-btn no-btn">1</button>
+      <button class="calc-btn no-btn">2</button>
+      <button class="calc-btn no-btn">3</button>
+      <button class="calc-btn minus-btn operation-btn">-</button>
+      <button class="calc-btn decimal-btn no-btn">.</button>
+      <button class="calc-btn no-btn">0</button>
+      <button class="calc-btn divide-btn operation-btn">/</button>
+      <button class="calc-btn multiply-btn operation-btn">x</button>
+      <button class="calc-btn reset-btn grid-col-span-2">RESET</button>
+      <button class="calc-btn score-btn grid-col-span-2">=</button>
+    </div>
+    <!-- sprawdzić czy używam klasy decimal-btm na koncu projektu, tak samo divice, multipy etc -->
   </div>
 </div>
