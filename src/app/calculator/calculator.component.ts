@@ -15,7 +15,6 @@ export class CalculatorComponent implements OnInit {
 
   onChangeTheme() {
     const wrapper = document.getElementById('wrapper');
-
     if (wrapper?.classList.contains('first-theme')) {
       wrapper.classList.toggle('first-theme');
       wrapper.classList.toggle('second-theme');
@@ -26,35 +25,6 @@ export class CalculatorComponent implements OnInit {
       wrapper.classList.toggle('third-theme');
       wrapper.classList.toggle('first-theme');
     }
-  }
-
-  getElements() {
-    const currentOperandTextElement = document.querySelector(
-      '.current-operand '
-    ) as HTMLElement | null;
-
-    const previousOperandTextElement = document.querySelector(
-      '.previous-operand '
-    ) as HTMLElement | null;
-
-    const numberButtons = document.querySelectorAll(
-      '.no-btn'
-    ) as NodeListOf<HTMLElement> | null;
-    const operationButtons = document.querySelectorAll(
-      '.operation-btn'
-    ) as NodeListOf<HTMLElement> | null;
-
-    const resetButton = document.querySelector(
-      '.reset-btn'
-    ) as HTMLElement | null;
-
-    const deleteButton = document.querySelector(
-      '.del-btn'
-    ) as HTMLElement | null;
-
-    const scoreButton = document.querySelector(
-      '.score-btn'
-    ) as HTMLElement | null;
   }
 
   prepareDisplay() {
