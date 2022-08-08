@@ -1,25 +1,21 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CalculatorService {
-  currentOperand: any = '';
-  previousOperand: any = '';
-  operation: string | undefined = '';
+  currentOperand: string = '';
+  previousOperand: string = '';
+  operation: string | null = null;
 
   constructor() {
     this.clear();
   }
 
-  Console(currentOperandTextElement: any) {
-    console.log(currentOperandTextElement);
-  }
-
   clear() {
     this.currentOperand = '';
     this.previousOperand = '';
-    this.operation = undefined;
+    this.operation = null;
   }
   delete() {
     this.currentOperand = this.currentOperand.toString().slice(0, -1);
@@ -31,7 +27,7 @@ export class CalculatorService {
   }
   chooseOperation(operation: string) {
     if (this.currentOperand === '') return;
-    if (this.previousOperand != '') this.compute();
+    if (this.previousOperand !== '') this.compute();
     this.operation = operation;
     this.previousOperand = this.currentOperand;
     this.currentOperand = '';
@@ -63,11 +59,28 @@ export class CalculatorService {
       default:
         return;
     }
-    this.currentOperand = computation;
+    this.currentOperand = computation.toString();
+    this.operation = null;
+    this.previousOperand = '';
   }
 
   getDisplayNumber(number: string) {
-    return number;
+    const stringNumber = number.toString();
+    const integerDigits = parseFloat(stringNumber.split('.')[0]);
+    const decimalDigits = stringNumber.split('.')[1];
+    let integerDisplay;
+
+    if (isNaN(integerDigits)) {
+      integerDisplay = '';
+    } else {
+      integerDisplay = integerDigits.toLocaleString('en', {
+        maximumFractionDigits: 0,
+      });
+    }
+
+    if (decimalDigits != null) {
+      return `${integerDisplay}.${decimalDigits}`;
+    } else return integerDisplay;
   }
 
   updateDisplay(
@@ -78,18 +91,23 @@ export class CalculatorService {
       currentOperandTextElement != null &&
       previousOperandTextElement != null
     ) {
-      currentOperandTextElement.innerText = this.currentOperand;
-
+      currentOperandTextElement.innerText = this.getDisplayNumber(
+        this.currentOperand
+      );
       if (this.operation != null) {
-        previousOperandTextElement.innerText = `${this.previousOperand} ${this.operation}`;
+        previousOperandTextElement.innerText = `${this.getDisplayNumber(
+          this.previousOperand
+        )} ${this.operation}`;
+      } else {
+        previousOperandTextElement.innerText = '';
       }
     }
   }
   // gdzies tutaj jeszce trzeba usunąć  previousOperandTextElement.innerText  kiedy naciśnie się wynik
 
-  clearPrevOperand(previousOperandTextElement: HTMLElement | null) {
-    if (previousOperandTextElement != null) {
-      previousOperandTextElement.innerText = '';
-    }
-  }
+  // clearPrevOperand(previousOperandTextElement: HTMLElement | null) {
+  //   if (previousOperandTextElement != null) {
+  //     previousOperandTextElement.innerText = '';
+  //   }
+  // }
 }

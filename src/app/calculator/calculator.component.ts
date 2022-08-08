@@ -129,7 +129,6 @@ export class CalculatorComponent implements OnInit {
       }
       this.calculatorService.compute();
       this.prepareDisplay();
-      // this.calculatorService.clearPrevOperand();
     });
   }
 }
