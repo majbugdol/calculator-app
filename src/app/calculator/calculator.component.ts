@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CalculatorService } from '../services/calculator.service';
 
 @Component({
@@ -6,12 +6,8 @@ import { CalculatorService } from '../services/calculator.service';
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.scss'],
 })
-export class CalculatorComponent implements OnInit {
+export class CalculatorComponent {
   constructor(private calculatorService: CalculatorService) {}
-
-  ngOnInit(): void {
-    this.calcInit();
-  }
 
   onChangeTheme() {
     const wrapper = document.getElementById('wrapper');
@@ -42,63 +38,37 @@ export class CalculatorComponent implements OnInit {
     );
   }
 
-  calcInit() {
-    const numberButtons = document.querySelectorAll(
-      '.no-btn'
-    ) as NodeListOf<HTMLElement> | null;
-    const operationButtons = document.querySelectorAll(
-      '.operation-btn'
-    ) as NodeListOf<HTMLElement> | null;
+  onNumberButtons(event: Event) {
+    if (event.target instanceof HTMLElement) {
+      this.calculatorService.appendNumber(event.target.innerText);
+      this.prepareDisplay();
+    }
+  }
 
-    const resetButton = document.querySelector(
-      '.reset-btn'
-    ) as HTMLElement | null;
+  onOperationButtons(event: Event) {
+    if (event.target instanceof HTMLElement) {
+      this.calculatorService.chooseOperation(event.target.innerText);
+      this.prepareDisplay();
+    }
+  }
 
-    const deleteButton = document.querySelector(
-      '.del-btn'
-    ) as HTMLElement | null;
+  onResetButton(event: Event) {
+    if (event.target instanceof HTMLElement) {
+      this.calculatorService.clear();
+      this.prepareDisplay();
+    }
+  }
 
-    const scoreButton = document.querySelector(
-      '.score-btn'
-    ) as HTMLElement | null;
-
-    numberButtons?.forEach((button) => {
-      if (numberButtons != null) {
-        button.addEventListener('click', () => {
-          this.calculatorService.appendNumber(button.innerText);
-          this.prepareDisplay();
-        });
-      }
-    });
-
-    operationButtons?.forEach((button) => {
-      if (operationButtons != null) {
-        button.addEventListener('click', () => {
-          this.calculatorService.chooseOperation(button.innerText);
-          this.prepareDisplay();
-        });
-      }
-    });
-
-    resetButton?.addEventListener('click', () => {
-      if (resetButton != null) {
-        this.calculatorService.clear();
-        this.prepareDisplay();
-      }
-    });
-
-    deleteButton?.addEventListener('click', () => {
-      if (deleteButton != null) {
-        this.calculatorService.delete();
-        this.prepareDisplay();
-      }
-    });
-
-    scoreButton?.addEventListener('click', () => {
-      if (scoreButton != null) {
-      }
+  onDeleteButton(event: Event) {
+    if (event.target instanceof HTMLElement) {
+      this.calculatorService.delete();
+      this.prepareDisplay();
+    }
+  }
+  onScoreButton(event: Event) {
+    if (event.target instanceof HTMLElement) {
       this.calculatorService.compute();
       this.prepareDisplay();
-    });
+    }
   }
 }
