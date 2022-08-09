@@ -23,11 +23,15 @@ export class CalculatorService {
 
   appendNumber(number: string) {
     if (number === '.' && this.currentOperand.includes('.')) return;
-    this.currentOperand = this.currentOperand.toString() + number.toString();
+    this.currentOperand = this.currentOperand + number.toString();
   }
   chooseOperation(operation: string) {
+    if (this.currentOperand === '' && this.previousOperand !== '') {
+      this.operation = operation;
+    }
     if (this.currentOperand === '') return;
     if (this.previousOperand !== '') this.compute();
+
     this.operation = operation;
     this.previousOperand = this.currentOperand;
     this.currentOperand = '';
@@ -94,20 +98,25 @@ export class CalculatorService {
       currentOperandTextElement.innerText = this.getDisplayNumber(
         this.currentOperand
       );
+
       if (this.operation != null) {
+        const conditions = ['+', '-', 'x', '/'];
+
+        //sprawdza czy wyrażenie zawiera już operatora
+        if (
+          conditions.some((el) =>
+            previousOperandTextElement.innerText.includes(el)
+          )
+        ) {
+          previousOperandTextElement.innerText.slice(0, -1);
+        }
+
         previousOperandTextElement.innerText = `${this.getDisplayNumber(
           this.previousOperand
         )} ${this.operation}`;
       } else {
         previousOperandTextElement.innerText = '';
       }
-    }
+    } else return;
   }
-  // gdzies tutaj jeszce trzeba usunąć  previousOperandTextElement.innerText  kiedy naciśnie się wynik
-
-  // clearPrevOperand(previousOperandTextElement: HTMLElement | null) {
-  //   if (previousOperandTextElement != null) {
-  //     previousOperandTextElement.innerText = '';
-  //   }
-  // }
 }
