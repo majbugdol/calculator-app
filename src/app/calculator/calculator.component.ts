@@ -71,4 +71,6 @@ export class CalculatorComponent {
       this.prepareDisplay();
     }
   }
+
+  // To Do: dodac zdarzenia reagowania na klawisz na klawiaturze
 }
