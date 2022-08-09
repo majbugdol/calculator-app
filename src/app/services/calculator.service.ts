@@ -32,8 +32,6 @@ export class CalculatorService {
     if (this.currentOperand === '') return;
     if (this.previousOperand !== '') this.compute();
 
-    // przerobić na SWITCHA
-
     this.operation = operation;
     this.previousOperand = this.currentOperand;
     this.currentOperand = '';
@@ -102,25 +100,23 @@ export class CalculatorService {
       );
 
       if (this.operation != null) {
-        console.log(previousOperandTextElement.textContent);
         const conditions = ['+', '-', 'x', '/'];
+
+        //sprawdza czy wyrażenie zawiera już operatora
         if (
           conditions.some((el) =>
             previousOperandTextElement.innerText.includes(el)
           )
         ) {
           previousOperandTextElement.innerText.slice(0, -1);
-          previousOperandTextElement.innerText = `${this.getDisplayNumber(
-            this.previousOperand
-          )} ${this.operation}`;
-        } else {
-          previousOperandTextElement.innerText = `${this.getDisplayNumber(
-            this.previousOperand
-          )} ${this.operation}`;
         }
+
+        previousOperandTextElement.innerText = `${this.getDisplayNumber(
+          this.previousOperand
+        )} ${this.operation}`;
       } else {
         previousOperandTextElement.innerText = '';
       }
-    }
+    } else return;
   }
 }
