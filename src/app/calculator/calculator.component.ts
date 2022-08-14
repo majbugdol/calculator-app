@@ -72,5 +72,5 @@ export class CalculatorComponent {
     }
   }
 
-  // To Do: dodac zdarzenia reagowania na klawisz na klawiaturze
+  // To Do: dodac zdarzenia reagowania na klawisz
 }
