@@ -1,6 +1,6 @@
 # CalculatorApp
 
-Kalkulator jest dostępny do podglądu na: https://majbugdol.github.io/calculator-app/
+Kalkulator jest dostępny na: https://majbugdol.github.io/calculator-app/
 
 # Projekt
 
