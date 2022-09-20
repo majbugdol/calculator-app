@@ -12,7 +12,6 @@ export class CalculatorComponent {
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     const keyValue = event.key;
-    console.log(keyValue);
 
     if (keyValue === '*') this.onOperationButtons('x');
     if (keyValue === '-' || keyValue === '+' || keyValue === '/') {
