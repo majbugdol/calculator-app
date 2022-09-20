@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Host, HostListener } from '@angular/core';
 import { CalculatorService } from '../services/calculator.service';
 
 @Component({
@@ -8,6 +8,32 @@ import { CalculatorService } from '../services/calculator.service';
 })
 export class CalculatorComponent {
   constructor(private calculatorService: CalculatorService) {}
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    const keyValue = event.key;
+    console.log(keyValue);
+
+    if (keyValue === '*') this.onOperationButtons('x');
+    if (keyValue === '-' || keyValue === '+' || keyValue === '/') {
+      this.onOperationButtons(keyValue);
+    }
+    if (keyValue.toLowerCase() === 'backspace') {
+      this.onDeleteButton(keyValue);
+    }
+    if (keyValue.toLowerCase() === 'delete') {
+      this.onResetButton(keyValue);
+    }
+    if (keyValue.toLowerCase() === 'enter' || keyValue === '=') {
+      this.onScoreButton(keyValue);
+    }
+    if (keyValue === ',' || keyValue === '.') this.onNumberButtons('.');
+    for (let i = 0; i <= 9; i++) {
+      if (event.key === `${i}`) {
+        this.onNumberButtons(keyValue);
+      }
+    }
+  }
 
   onChangeTheme() {
     const wrapper = document.getElementById('wrapper');
@@ -38,35 +64,39 @@ export class CalculatorComponent {
     );
   }
 
-  onNumberButtons(event: Event) {
-    if (event.target instanceof HTMLElement) {
+  onNumberButtons(event: Event | string) {
+    if (typeof event === 'string') {
+      this.calculatorService.appendNumber(event);
+    } else if (event.target instanceof HTMLElement) {
       this.calculatorService.appendNumber(event.target.innerText);
-      this.prepareDisplay();
     }
+    this.prepareDisplay();
   }
 
-  onOperationButtons(event: Event) {
-    if (event.target instanceof HTMLElement) {
+  onOperationButtons(event: Event | string) {
+    if (typeof event === 'string') {
+      this.calculatorService.chooseOperation(event);
+    } else if (event.target instanceof HTMLElement) {
       this.calculatorService.chooseOperation(event.target.innerText);
-      this.prepareDisplay();
     }
+    this.prepareDisplay();
   }
 
-  onResetButton(event: Event) {
-    if (event.target instanceof HTMLElement) {
+  onResetButton(event: Event | string) {
+    if (typeof event === 'string' || event.target instanceof HTMLElement) {
       this.calculatorService.clear();
       this.prepareDisplay();
     }
   }
 
-  onDeleteButton(event: Event) {
-    if (event.target instanceof HTMLElement) {
+  onDeleteButton(event: Event | string) {
+    if (typeof event === 'string' || event.target instanceof HTMLElement) {
       this.calculatorService.delete();
       this.prepareDisplay();
     }
   }
-  onScoreButton(event: Event) {
-    if (event.target instanceof HTMLElement) {
+  onScoreButton(event: Event | string) {
+    if (typeof event === 'string' || event.target instanceof HTMLElement) {
       this.calculatorService.compute();
       this.prepareDisplay();
     }
